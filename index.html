@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clouds 3 - Web Chat App</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- PeerJS -->
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Overlay untuk menu mobile -->
+        <div class="overlay" id="drawerOverlay"></div>
+
+        <!-- Sidebar / Menu Drawer -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand-header">
+                <div class="brand-logo">
+                    <i data-lucide="cloud"></i>
+                    <span>Clouds 3</span>
+                </div>
+                <button class="btn-leave" id="btnLeave" title="Keluar Room">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+
+            <div class="card-room-info">
+                <span class="card-title">ID ROOM</span>
+                <div class="room-id-display" id="displayRoomId">23444</div>
+                <div class="passcode-box">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="key" size="16"></i>
+                        <span id="displayPasscode">cf2233</span>
+                    </div>
+                    <button class="btn-copy" id="btnCopy" title="Salin Info">
+                        <i data-lucide="copy" size="16"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="member-list-section">
+                <div class="member-header">
+                    <span>Anggota Aktif</span>
+                    <span class="badge-count" id="memberCount">1</span>
+                </div>
+                <div class="member-item">
+                    <span class="status-dot"></span>
+                    <span id="userNickname">2233 (Saya)</span>
+                </div>
+            </div>
+
+            <div class="sidebar-actions">
+                <button class="btn-menu-action" id="btnTheme">
+                    <i data-lucide="palette"></i>
+                    <span>Ubah Tema & Wallpaper</span>
+                </button>
+                <button class="btn-menu-action" id="btnSticker">
+                    <i data-lucide="sparkles"></i>
+                    <span>Buat Stiker Baru</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <!-- Header -->
+            <header class="chat-header">
+                <div class="chat-header-left">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <div class="room-title-box">
+                        <h2>Room: <span id="headerRoomId">23444</span></h2>
+                        <span class="status-connected">Terhubung</span>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <button class="btn-icon-action" id="btnMediaImage"><i data-lucide="image"></i></button>
+                    <button class="btn-icon-action" id="btnMediaFile"><i data-lucide="file-text"></i></button>
+                </div>
+            </header>
+
+            <!-- Chat Messages Container -->
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-card">
+                    <p>👋 <strong>Selamat datang di room!</strong></p>
+                    <p>Bagikan Kode ID dan Passcode ke teman kamu untuk mulai mengobrol.</p>
+                    <br>
+                    <p style="color: #38bdf8;">Kamu bergabung sebagai "<span id="welcomeNickname">2233</span>"</p>
+                </div>
+
+                <!-- Chat Messages (Contoh Normal LTR) -->
+                <div class="message-row sent">
+                    <span class="message-sender">Saya</span>
+                    <div class="message-bubble">Hai</div>
+                    <span class="message-time">02:47</span>
+                </div>
+
+                <div class="message-row sent">
+                    <span class="message-sender">Saya</span>
+                    <div class="message-bubble">Hai</div>
+                    <span class="message-time">02:47</span>
+                </div>
+
+                <div class="message-row sent">
+                    <span class="message-sender">Saya</span>
+                    <div class="message-bubble">Kok</div>
+                    <span class="message-time">02:47</span>
+                </div>
+            </div>
+
+            <!-- Chat Input Footer -->
+            <footer class="chat-input-area">
+                <button class="btn-icon-action" title="Emoji"><i data-lucide="smile"></i></button>
+                <button class="btn-icon-action" title="Lampirkan Gambar"><i data-lucide="image"></i></button>
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ketik pesan..." autocomplete="off">
+                <button class="btn-send" id="btnSend" title="Kirim"><i data-lucide="send"></i></button>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
